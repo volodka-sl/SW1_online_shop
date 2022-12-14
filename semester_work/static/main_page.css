@@ -1,0 +1,766 @@
+html {
+    /*filter: brightness(20%);*/
+}
+
+body {
+    font-family: "ISOCT", arial, sans-serif;
+    background: #898989;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+button {
+    font-family: "ISOCT", arial, sans-serif;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    border: 2px solid white;
+    background: black;
+    color: white;
+}
+
+.header__logo {
+    transition: all 0.3s ease-in-out;
+    border-radius: 16px;
+}
+
+.header__logo:hover {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 5px 5px 10px -5px black;
+    border-radius: 16px;
+    background: black;
+}
+
+.header__proficon {
+    margin-right: 120px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.header__proficon:hover {
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    box-shadow: 5px 5px 10px -5px white;
+}
+
+.header__carticon {
+    margin-left: 80px;
+    margin-right: 50px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.header__carticon:hover {
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    box-shadow: 5px 5px 10px -5px white;
+}
+
+.header__loginwindow {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    height: 300px;
+    justify-content: end;
+    margin-right: 15px;
+    margin-top: -30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.header__loginwindow_after {
+    opacity: 1;
+    visibility: visible;
+    z-index: 3;
+}
+
+.loginForm__input {
+    display: flex;
+    position: absolute;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 70px;
+    width: 200px;
+    padding-left: 6px;
+    font-family: "ISOCT", arial, sans-serif;
+    font-weight: bold;
+    border-radius: 25px;
+    border: 2px solid white;
+}
+
+.passwordForm__input {
+    display: flex;
+    position: absolute;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 110px;
+    width: 200px;
+    padding-left: 6px;
+    font-family: "ISOCT", arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 25px;
+    border: 2px solid white;
+}
+
+.login__showpassword {
+    display: flex;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    top: 111px;
+    right: 18px;
+    letter-spacing: 2px;
+}
+
+.login__button {
+    display: block;
+    position: absolute;
+    top: 170px;
+    right: 70px;
+    width: 100px;
+    text-align: center;
+    align-items: center;
+    background: white;
+    color: black;
+}
+
+.registerhelp {
+    position: absolute;
+    width: 200px;
+    top: 230px;
+    right: 10px;
+    font-size: smaller;
+    color: white;
+}
+
+.header__nav__link {
+    display: inline-flex;
+    margin-left: 100px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.header__nav__link:hover {
+    color: white;
+    /*box-shadow: 5px 5px 10px -5px white;*/
+    /*background: black;*/
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.2);
+    padding: 8px;
+}
+
+.registerForm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -230px;
+    background: black;
+    width: 460px;
+    height: 500px;
+    border-radius: 25px;
+    border: 2px solid white;
+    text-align: center;
+    z-index: 3;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.registerForm_after {
+    visibility: visible;
+    opacity: 1;
+}
+
+.closeButton {
+    position: relative;
+    display: block;
+    background: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 25px;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 93%;
+    margin-top: 10px;
+}
+
+.registerForm__input {
+    font-family: "ISOCT", arial, sans-serif;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    width: 380px;
+    height: 40px;
+    border-radius: 16px;
+    margin-left: 28px;
+    border: 2px solid black;
+    background: white;
+    color: black;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.registerForm__input:not(:first-child) {
+    margin-top: 10px;
+}
+
+.registerForm__input:first-child {
+    margin-top: 50px;
+}
+
+.registerButton {
+    margin-top: 24px;
+    width: 150px;
+    font-size: 13px;
+    background: white;
+    color: black;
+}
+
+.blackbg {
+    position: absolute;
+    background-color: black;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    display: block;
+    cursor: pointer;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.blackbg_after {
+    visibility: visible;
+    opacity: 0.5;
+}
+
+.profileinfo {
+    background: white;
+    position: absolute;
+    display: block;
+    color: black;
+    width: 800px;
+    height: 380px;
+    left: 50%;
+    top: 50%;
+    margin: -190px 0 0 -400px;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 12px;
+    text-align: right;
+}
+
+.profileinfo__block:not(:first-child) {
+    margin-top: 20px;
+}
+
+.profileinfo__block {
+    font-weight: bold;
+}
+
+.profileinfo__blocktext {
+    font-family: "ISOCT", arial, sans-serif;
+    border-radius: 16px;
+    border: 1px solid black;
+    padding: 4px;
+    width: 300px;
+    text-align: center;
+    margin-right: 200px;
+}
+
+.profileinfo__title {
+    margin-right: 260px;
+}
+
+.refactdata {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    top: 7px;
+    right: 180px;
+}
+
+.profilebuttons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 86%;
+    top: 32%;
+    width: 100px;
+    height: 66px;
+}
+
+.profilebutton {
+    margin-top: 40px;
+}
+
+.findpr {
+    position: relative;
+    display: flex;
+    width: 40%;
+    height: 52px;
+    left: 70px;
+    top: 18px;
+    font-family: "ISOCT", arial, sans-serif;
+    font-weight: bold;
+    border-radius: 16px;
+    padding-left: 12px;
+    border: 1px solid black;
+    z-index: 0;
+}
+
+.findpr__icon {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: 26px;
+    top: 32px;
+    cursor: pointer;
+    z-index: 0;
+}
+
+.catalogmenu {
+    position: absolute;
+    display: flex;
+    margin: 0;
+    width: 100%;
+    justify-content: start;
+    top: 130px;
+    right: 22px;
+    z-index: 1;
+}
+
+.catalogmenu ul {
+    list-style: none;
+    padding-right: 40px;
+}
+
+.catalogmenu > ul {
+    display: flex;
+    justify-content: center;
+}
+
+.catalogmenu > ul li a {
+    text-decoration: none;
+    color: white;
+    background: black;
+    border: 1px white solid;
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+    border-radius: 16px;
+    width: 160px;
+}
+
+.catalogmenu > ul li:not(:first-child) a {
+    display: block;
+    padding: 15px 30px 15px 30px;
+}
+
+.catalogmenu > ul li:first-child a {
+    display: block;
+    padding: 15px 30px 15px 30px;
+}
+
+.catalogmenu > ul li:not(:last-child) a {
+    margin-right: 10px
+}
+
+.catmenhd {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.catalogmenu > ul li {
+    position: relative;
+}
+
+.catalogmenu li a:hover {
+    background: white;
+    color: black;
+    box-shadow: 1px 5px 10px -5px black;
+    transition: all 0.3s ease-in;
+}
+
+.catalogmenu li ul {
+    display: flex;
+    position: absolute;
+    width: 160px;
+    margin-top: 10px;
+    visibility: hidden;
+}
+
+.catalogmenu li:hover > ul {
+    visibility: visible;
+}
+
+.products__item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 16px;
+    width: 200px;
+    height: 446px;
+    text-align: center;
+    border: 2px solid white;
+}
+
+.products__item__page {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 16px;
+    width: 400px;
+    height: 600px;
+    text-align: center;
+    border: 2px solid white;
+    left: 160px;
+    top: 160px;
+    box-shadow: 1px 5px 10px -5px white;
+}
+
+.products__image__page {
+    flex-direction: row;
+    width: 400px;
+    height: 540px;
+    border-radius: 16px 16px 0 0;
+}
+
+.bookmark__page {
+    display: inline-flex;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: -6px;
+    border-radius: 16px;
+    background: white;
+    padding: 9px;
+    cursor: pointer;
+}
+
+.bookmark__page:hover {
+    box-shadow: 5px 5px 10px -5px #898989;
+}
+
+.add_to_cart__page {
+    display: inline-flex;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: 6px;
+    border-radius: 16px;
+    background: white;
+    padding: 9px;
+    cursor: pointer;
+}
+
+.add_to_cart__page:hover {
+    box-shadow: 5px 5px 10px -5px #898989;
+}
+
+.product__info {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 600px;
+    left: 50%;
+    top: 160px;
+    border: 2px solid black;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 1px 5px 10px -5px white;
+    padding-left: 20px;
+}
+
+.product__info span {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.products {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    top: 300px;
+    width: 70%;
+    z-index: 0;
+    left: 50%;
+    margin: 0 0 0 -20%;
+}
+
+.products__nonfilter {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    top: 300px;
+    width: 70%;
+    z-index: 0;
+    left: 50%;
+    margin: 0 0 0 -27%;
+}
+
+.products__image {
+    flex-direction: row;
+    width: 200px;
+    height: 270px;
+    border-radius: 16px 16px 0 0;
+}
+
+.products__item:not(:nth-child(4n)) {
+    margin-right: 20px;
+}
+
+.products__item:not(:nth-child(-n+4)) {
+    margin-top: 20px;
+}
+
+.products__name {
+    position: relative;
+    cursor: pointer;
+    top: -46px;
+}
+
+.products__name__notlogged {
+    position: relative;
+    cursor: pointer;
+}
+
+.filters {
+    display: block;
+    position: absolute;
+    top: 276px;
+    left: 140px;
+    font-weight: bold;
+}
+
+.inputprice1 {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid white;
+    border-radius: 16px;
+    background: black;
+    color: white;
+    font-family: "ISOCT", arial, sans-serif;
+    font-weight: bold;
+    padding-left: 10px;
+    margin-top: 6px;
+}
+
+.inputprice2 {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid white;
+    border-radius: 16px;
+    background: black;
+    color: white;
+    font-family: "ISOCT", arial, sans-serif;
+    font-weight: bold;
+    padding-left: 10px;
+    margin-top: 6px;
+}
+
+.filterbutton {
+    display: block;
+    margin-top: 40px;
+    width: 200px;
+    height: 60px;
+}
+
+.bookmark {
+    display: inline-flex;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: -6px;
+    top: -266px;
+    border-radius: 16px;
+    background: white;
+    padding: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.bookmark:hover {
+    box-shadow: 5px 5px 10px -5px #898989;
+    transform: scale(1.2);
+}
+
+.add_to_cart {
+    display: inline-flex;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: 6px;
+    top: -266px;
+    border-radius: 16px;
+    background: white;
+    padding: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.add_to_cart:hover {
+    box-shadow: 5px 5px 10px -5px #898989;
+    transform: scale(1.2);
+}
+
+.message {
+    position: absolute;
+    height: 100px;
+    width: 600px;
+    left: 50%;
+    top: 50%;
+    margin: -50px 0 0 -300px;
+    padding: 20px;
+}
+
+.products__status_y {
+    font-weight: bolder;
+    position: relative;
+    background: #98FB98;
+    transform: rotate(-56deg);
+    border-radius: 10px;
+    width: 160px;
+    height: 34px;
+    font-size: 20px;
+    align-items: center;
+    left: -60px;
+    top: -220px;
+}
+
+.products__status_n {
+    font-weight: bolder;
+    position: relative;
+    background: #B00000;
+    transform: rotate(-56deg);
+    border-radius: 10px;
+    width: 160px;
+    height: 34px;
+    font-size: 20px;
+    align-items: center;
+    left: -60px;
+    top: -220px;
+}
+
+.products__status_y__page {
+    font-weight: bolder;
+    position: relative;
+    background: #98FB98;
+    transform: rotate(-50deg);
+    border-radius: 10px;
+    width: 320px;
+    height: 50px;
+    font-size: 22px;
+    left: 50px;
+    top: 60px;
+    text-align: center;
+    align-items: center;
+}
+
+.products__status_n__page {
+    font-weight: bolder;
+    position: relative;
+    background: #B00000;
+    transform: rotate(-50deg);
+    border-radius: 10px;
+    width: 320px;
+    height: 50px;
+    font-size: 22px;
+    left: 50px;
+    top: 60px;
+    text-align: center;
+    align-items: center;
+}
+
+.products__status_y__page__notlogged {
+    font-weight: bolder;
+    position: relative;
+    background: #98FB98;
+    transform: rotate(-50deg);
+    border-radius: 10px;
+    width: 320px;
+    height: 50px;
+    font-size: 22px;
+    left: 50px;
+    top: -200px;
+    text-align: center;
+    align-items: center;
+}
+
+.products__status_n__page__notlogged {
+    font-weight: bolder;
+    position: relative;
+    background: #B00000;
+    transform: rotate(-50deg);
+    border-radius: 10px;
+    width: 320px;
+    height: 50px;
+    font-size: 22px;
+    left: 50px;
+    top: -200px;
+    text-align: center;
+    align-items: center;
+}
+
+.makeorderbutton {
+    display: flex;
+    position: absolute;
+    border: 2px solid black;
+    border-radius: 16px;
+    background: white;
+    padding: 6px;
+    cursor: pointer;
+    left: 1316px;
+    top: 160px;
+}
+
+.makeorderbutton:hover {
+    box-shadow: 5px 5px 10px -5px black;
+}
+
+.summoforder {
+    display: flex;
+    position: absolute;
+    border: 2px solid black;
+    border-radius: 16px;
+    background: white;
+    padding: 6px;
+    cursor: pointer;
+    left: 1316px;
+    top: 100px;
+    box-shadow: 5px 5px 10px -5px black;
+}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+    .adminblock {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 500px;
+        height: 30px;
+        margin: -15px 0 0 -250px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .admininput {
+        border-radius: 6px;
+        color: white;
+        background: black;
+        border: 2px solid white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<form action="" method="POST">
+    <div class="adminblock">
+        Enter secret key: <input name="admin" class="admininput" type="password">
+        <br>
+        <button type="submit">Try</button>
+    </div>
+</form>
+{% endblock %}

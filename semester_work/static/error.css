@@ -1,0 +1,42 @@
+body {
+    background: #898989;
+}
+
+.guardpicture {
+    display: flex;
+    position: absolute;
+    width: 240px;
+    height: 360px;
+    top: 36%;
+    left: 50%;
+    margin: -180px 0 0 -120px;
+}
+
+.errortext {
+    display: block;
+    position: absolute;
+    font-family: "ISOCT", arial, sans-serif;
+    width: 400px;
+    top: 90%;
+    left: 50%;
+    margin: -160px 0 0 -200px;
+    text-align: center;
+    align-items: center;
+    color: white;
+}
+
+button {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 36px;
+    text-align: center;
+    align-items: center;
+    border-radius: 25px;
+    border: 2px solid white;
+    background: #DB5CF5FC;
+    color: white;
+    left: 50%;
+    margin: 0 0 0 -100px;
+    cursor: pointer;
+}

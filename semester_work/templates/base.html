@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link href="//db.onlinewebfonts.com/c/a12d5e73886a9207e55a077fc86ecd47?family=ISOCT" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='main_page.css') }}" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://unpkg.com/jquery-input-mask-phone-number@1.0.14/dist/jquery-input-mask-phone-number.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<header class="header">
+    <div>
+        <img class="header__logo" src="/static/src/lightlogo.png" onmouseover="this.src='/static/src/darklogo.png'" onmouseout="this.src='/static/src/lightlogo.png'" alt="" style="cursor: pointer" onclick="location.href = '{{ url_for("main_page") }}'">
+    </div>
+    <div>
+        <nav class="header__nav">
+            <a href="" class="header__nav__link">NEWS</a>
+            <a href="" class="header__nav__link" onclick="location.href='{{ url_for("main_page") }}'">CATALOG</a>
+            <a href="" class="header__nav__link">ABOUT US</a>
+            <a href="" class="header__nav__link">CONTACTS</a>
+        </nav>
+    </div>
+    <div>
+        {% if not session.is_logged %}
+        <img class="header__carticon" src="/static/src/carticon.png" alt="" onclick="alert('Register firstly!')">
+        <img class="header__proficon" src="/static/src/profileicon.png" alt="" onclick="showLoginWindow()">
+        {% else %}
+        <img class="header__carticon" src="/static/src/carticon.png" alt="" onclick="location.href='{{ url_for("show_cart") }}'">
+        <img class="header__proficon" src="/static/src/profileicon.png" alt="" onclick="location.href = '{{ url_for("show_profile") }}'">
+        {% endif %}
+    </div>
+</header>
+{% if not session.is_logged %}
+<form action="" method="POST">
+    <div id="loginwindow" class="header__loginwindow">
+        <img src="/static/src/loginwindow.png" alt="">
+        <input type="text" name="mailmini" id="mailmini" placeholder="Mail" class="loginForm__input">
+        <input type="password" name="passwordmini" id="passwordmini" placeholder="Password" class="passwordForm__input">
+        <img id="eyemini" class="login__showpassword" src="/static/src/eye.png" alt="" onclick="showPassword()">
+        <button class="login__button" type="submit" onclick="">Log in</button>
+        <div class="registerhelp">
+            <span>Don't have account?</span>
+            <span style="text-decoration: underline; cursor: pointer" onclick="openRegForm()">Register now!</span>
+        </div>
+    </div>
+</form>
+
+<form action="" method="POST">
+    <div class="registerForm" id="registerForm">
+        <img class="closeButton" onclick="openRegForm()" src="/static/src/close.png" alt="">
+        <input type="text" name="name" id="name" placeholder="Name" class="registerForm__input">
+        <input type="text" name="surname" id="surname" placeholder="Surname" class="registerForm__input">
+        <input type="tel" name="phone" id="phone" placeholder="Phone (without '+7')" maxlength="12" class="registerForm__input">
+        <input type="text" name="mail" id="mail" placeholder="Mail" class="registerForm__input">
+        <input type="text" name="dob" id="dob" placeholder="Date of birth (dd.mm.yyyy)" class="registerForm__input">
+        <input type="text" name="password" id="password" placeholder="Password" class="registerForm__input">
+        <input type="text" name="password_conf" id="password_conf" placeholder="Password confirm" class="registerForm__input">
+        <button class="registerButton" id="registerButton" type="button" onclick="checkForm()">Register</button>
+    </div>
+</form>
+<div class="blackbg" id="blackbg" onclick="openRegForm()"></div>
+<script>
+    $(document).ready(function(){
+        $('#phone').mask('(000) 000-0000');
+        $('#dob').mask('00.00.0000');
+    })
+</script>
+{% endif %}
+<script src="{{ url_for('static', filename='js/register_form.js') }}"></script>
+{% block body %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<form action="" method="POST">
+    <input type="text" placeholder="Name" name="name">
+    <br>
+    <input type="text" placeholder="Brand" name="brand">
+    <br>
+    <input type="text" placeholder="Desc" name="desc">
+    <br>
+    <input type="text" placeholder="Category" name="category">
+    <br>
+    <input type="text" placeholder="Colour" name="colour">
+    <br>
+    <input type="text" placeholder="Price" name="price">
+    <br>
+    <input type="text" placeholder="Status ('y' or 'n'" name="status">
+    <br>
+    <input type="text" placeholder="Photo (link)" name="photo">
+    <br>
+    <button type="submit" onclick="alert('Product created!')">Create</button>
+</form>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<div id="products" class="productpage">
+    <div class="products__item__page">
+        <img class="products__image__page" src="{{ product.photo }}" alt="">
+        {% if session.is_logged %}
+            {% if product.status == 'y' %}
+                {% if product.name in session.cart %}
+                    <img class="add_to_cart__page" src="/static/src/clear_cart.png" alt="{{ product.name }}" onclick="this.src.includes('clear') ? this.src='/static/src/add_to_cart.gif' : this.src='/static/src/clear_cart.png';">
+                {% else %}
+                    <img class="add_to_cart__page" src="/static/src/add_to_cart.gif" alt="{{ product.name }}" onclick="this.src.includes('clear') ? this.src='/static/src/add_to_cart.gif' : this.src='/static/src/clear_cart.png';">
+                {% endif %}
+                {% if product.name in session.saved %}
+                    <img class="bookmark__page" src="/static/src/bookmarked.png" alt="{{ product.name }}" onclick="this.src.includes('bookmarked') ? this.src='/static/src/bookmark.png' : this.src='/static/src/bookmarked.png';">
+                {% else %}
+                    <img class="bookmark__page" src="/static/src/bookmark.png" alt="{{ product.name }}" onclick="this.src.includes('bookmarked') ? this.src='/static/src/bookmark.png' : this.src='/static/src/bookmarked.png';">
+                {% endif %}
+            {% else %}
+                {% if product.name in session.cart %}
+                    <img class="add_to_cart__page" src="/static/src/clear_cart.png" alt="{{ product.name }}" style="opacity: 0.3; cursor: default">
+                {% else %}
+                    <img class="add_to_cart__page" src="/static/src/add_to_cart.gif" alt="{{ product.name }}" style="opacity: 0.3; cursor: default">
+                {% endif %}
+                {% if product.name in session.saved %}
+                    <img class="bookmark__page" src="/static/src/bookmarked.png" alt="{{ product.name }}" onclick="this.src.includes('bookmarked') ? this.src='/static/src/bookmark.png' : this.src='/static/src/bookmarked.png';">
+                {% else %}
+                    <img class="bookmark__page" src="/static/src/bookmark.png" alt="{{ product.name }}" onclick="this.src.includes('bookmarked') ? this.src='/static/src/bookmark.png' : this.src='/static/src/bookmarked.png';">
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="product__info">
+        <span>Name</span><p>{{ product.category }} {{ product.name }}</p>
+        <span>Brand</span><p>{{ product.manufacturer }}</p>
+        <span>Description</span><p>{{ product.description }}</p>
+        <span>Colour</span><p>{{ product.colour|capitalize }}</p>
+        <span>Price</span><p>{{ product.price }} rubles</p>
+    </div>
+    {% if product.status == 'y' %}
+        {% if session.is_logged %}
+            <p class="products__status_y__page">In stock</p>
+        {% else %}
+            <p class="products__status_y__page__notlogged">In stock</p>
+        {% endif %}
+    {% else %}
+        {% if session.is_logged %}
+            <p class="products__status_n__page">Missing</p>
+        {% else %}
+            <p class="products__status_n__page__notlogged">Missing</p>
+        {% endif %}
+    {% endif %}
+</div>
+<script>
+    $('.bookmark__page').click(function() {
+        let toSave = this.alt
+        $.ajax({
+            url: '{{ url_for('set_saved') }}',
+            method: 'post',
+            dataType: 'html',
+            data: {toSave},
+            success: function(data) {
+
+            }
+        })
+    })
+
+    $('.add_to_cart__page').click(function() {
+        let toCart = this.alt
+        $.ajax({
+            url: '{{ url_for('set_cart') }}',
+            method: 'post',
+            dataType: 'html',
+            data: {toCart},
+            success: function(data) {
+
+            }
+        })
+    })
+</script>
+{% endblock %}

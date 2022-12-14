@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<header class="catmenhd">
+    <nav class="catalogmenu">
+        <ul>
+            <li><a href="#" class="catalogmenu__pod" onclick="location.href = '{{ url_for("get_category", product_category='POD') }}'">POD-systems</a>
+                <ul>
+                    <li><a href="#" class="catalogmenu__pod__menu">Brand</a>
+                        <ul>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='POD', product_property='Vaporesso') }}'">Vaporesso</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='POD', product_property='VOOPOO') }}'">VOOPOO</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='POD', product_property='Geekvape') }}'">Geekvape</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="catalogmenu__pod__menu">Colour</a>
+                        <ul>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='POD', product_property='black') }}'">Black</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='POD', product_property='blue') }}'">Blue</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='POD', product_property='green') }}'">Green</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='POD', product_property='grey') }}'">Grey</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='POD', product_property='red') }}'">Red</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#" class="catalogmenu__os" onclick="location.href = '{{ url_for("get_category", product_category='One-shot') }}'">One-shot</a>
+                <ul>
+                    <li><a href="#" class="catalogmenu__pod__menu">Brand</a>
+                        <ul>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='One-shot', product_property='Elf Bar') }}'">Elf Bar</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='One-shot', product_property='VAPORLAX') }}'">VAPORLAX</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="catalogmenu__pod__menu">Colour</a>
+                        <ul>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='One-shot', product_property='black') }}'">Black</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='One-shot', product_property='blue') }}'">Blue</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='One-shot', product_property='green') }}'">Green</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='One-shot', product_property='red') }}'">Red</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#" class="catalogmenu__lqd" onclick="location.href = '{{ url_for("get_category", product_category='Liquid') }}'">Liquid</a>
+                <ul>
+                    <li><a href="#" class="catalogmenu__pod__menu">Brand</a>
+                        <ul>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='Liquid', product_property='Smoke Kitchen') }}'">Smoke Kitchen</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='Liquid', product_property='Maxwells') }}'">Maxwells</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='Liquid', product_property='Taboo') }}'">Taboo</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='Liquid', product_property='Voodoo') }}'">Voodoo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="catalogmenu__pod__menu">Colour</a>
+                        <ul>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='Liquid', product_property='blue') }}'">Blue</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='Liquid', product_property='green') }}'">Green</a></li>
+                            <li><a href="#" onclick="location.href = '{{ url_for("get_category_and_property", product_category='Liquid', product_property='red') }}'">Red</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+<!--        <input type="text" name="finder" class="findpr" placeholder="Find something">-->
+<!--        <img class="findpr__icon" src="/static/src/search.png" alt="">-->
+    </nav>
+</header>
+<nav class="filters">
+    <h2>Brand</h2>
+    {% for brand in brands %}
+        <input class="manufacturer" type="checkbox" value="{{ brand.manufacturer }}"> {{ brand.manufacturer }}<br>
+    {% endfor %}
+    <h2>Colour</h2>
+    {% for colour in colours %}
+        <input class="colour" type="checkbox" value="{{ colour.colour }}"> {{ colour.colour|capitalize }}<br>
+    {% endfor %}
+    <h2>Price</h2>
+    <input class="inputprice1" type="text" placeholder="From"><input class="inputprice2" type="text" placeholder="To">
+    <h2>Status</h2>
+    <input class="status" type="checkbox" value="y"> In stock<br>
+    <input class="status" type="checkbox" value="n"> Missing<br>
+    <button id="filterbutton" class="filterbutton" type="submit">Filter</button>
+</nav>
+<div id="products" class="products">
+{% for product in products %}
+    <div class="products__item">
+        <img class="products__image" src="{{ product.photo }}" alt="">
+        {% if session.is_logged %}
+            {% if product.status == 'y' %}
+                {% if product.name in session.cart %}
+                    <img class="add_to_cart" src="/static/src/clear_cart.png" alt="{{ product.name }}" onclick="this.src.includes('clear') ? this.src='/static/src/add_to_cart.gif' : this.src='/static/src/clear_cart.png';">
+                {% else %}
+                    <img class="add_to_cart" src="/static/src/add_to_cart.gif" alt="{{ product.name }}" onclick="this.src.includes('clear') ? this.src='/static/src/add_to_cart.gif' : this.src='/static/src/clear_cart.png';">
+                {% endif %}
+                {% if product.name in session.saved %}
+                    <img class="bookmark" src="/static/src/bookmarked.png" alt="{{ product.name }}" onclick="this.src.includes('bookmarked') ? this.src='/static/src/bookmark.png' : this.src='/static/src/bookmarked.png';">
+                {% else %}
+                    <img class="bookmark" src="/static/src/bookmark.png" alt="{{ product.name }}" onclick="this.src.includes('bookmarked') ? this.src='/static/src/bookmark.png' : this.src='/static/src/bookmarked.png';">
+                {% endif %}
+            {% else %}
+                {% if product.name in session.cart %}
+                    <img class="add_to_cart" src="/static/src/clear_cart.png" alt="{{ product.name }}" style="opacity: 0.3; cursor: default">
+                {% else %}
+                    <img class="add_to_cart" src="/static/src/add_to_cart.gif" alt="{{ product.name }}" style="opacity: 0.3; cursor: default">
+                {% endif %}
+                {% if product.name in session.saved %}
+                    <img class="bookmark" src="/static/src/bookmarked.png" alt="{{ product.name }}" onclick="this.src.includes('bookmarked') ? this.src='/static/src/bookmark.png' : this.src='/static/src/bookmarked.png';">
+                {% else %}
+                    <img class="bookmark" src="/static/src/bookmark.png" alt="{{ product.name }}" onclick="this.src.includes('bookmarked') ? this.src='/static/src/bookmark.png' : this.src='/static/src/bookmarked.png';">
+                {% endif %}
+            {% endif %}
+            <p class="products__name" onclick="location.href = '{{ url_for("get_product", product_name=product.name) }}'">{{ product.name }}</p>
+        {% else %}
+            <p class="products__name__notlogged" onclick="location.href = '{{ url_for("get_product", product_name=product.name) }}'">{{ product.name }}</p>
+        {% endif %}
+        {% if product.status == 'y' %}
+            <p class="products__status_y">In stock</p>
+        {% else %}
+            <p class="products__status_n">Missing</p>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
+<script>
+    $('.bookmark').click(function() {
+        let toSave = this.alt
+        $.ajax({
+            url: '{{ url_for('set_saved') }}',
+            method: 'post',
+            dataType: 'html',
+            data: {toSave},
+            success: function(data) {
+
+            }
+        })
+    })
+
+    $('.add_to_cart').click(function() {
+        let toCart = this.alt
+        $.ajax({
+            url: '{{ url_for('set_cart') }}',
+            method: 'post',
+            dataType: 'html',
+            data: {toCart},
+            success: function(data) {
+
+            }
+        })
+    })
+
+    $('#filterbutton').click(function() {
+        let checkboxes = {'manufacturer': [], 'colour': [], 'status': []};
+        for (let item in checkboxes) {
+            $(`input.${item}:checkbox:checked`).each(function() {
+                checkboxes[item].push(this.value);
+            });
+        }
+        if ($('input.inputprice1').val() && !$('input.inputprice2').val()) {
+            checkboxes['price'] = [$('input.inputprice1').val(), -1]
+        } else if ($('input.inputprice2').val() && !$('input.inputprice1').val()) {
+            checkboxes['price'] = [-1, $('input.inputprice2').val()]
+        } else if ($('input.inputprice1').val() && $('input.inputprice2').val()) {
+            checkboxes['price'] = [$('input.inputprice1').val(), $('input.inputprice2').val()]
+        }
+        $.ajax({
+            url: '{{ url_for('filter_prod') }}',
+            method: 'get',
+            dataType: 'html',
+            data: checkboxes,
+            success: function(data) {
+                data = JSON.parse(data)
+                // $('#products').html('{% for product in products %}\n' +
+                //     '    <div class="products__item">\n' +
+                //     '        <img class="products__image" src="{{ product.photo }}" alt="">\n' +
+                //     '        <p>{{ product.name }}</p>\n' +
+                //     '    </div>\n' +
+                //     '{% endfor %}')
+                $('#products').html(data.keys)
+            }
+        })
+    })
+
+    $(document).ready(function(){
+        $('.inputprice').mask('0000');
+    })
+</script>
+{% endblock %}

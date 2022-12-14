@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+    .order {
+        background: black;
+        color: white;
+    }
+
+    .order:not(:first-child) {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 16px;
+        border: 2px solid white;
+    }
+
+    .order:hover {
+        box-shadow: 5px 5px 10px -5px white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+{% for order in orders %}
+<div class="order">
+    <p>{{ order.products }}: <strong>{{ order.summ }}</strong></p>
+</div>
+{% endfor %}
+{% endblock %}

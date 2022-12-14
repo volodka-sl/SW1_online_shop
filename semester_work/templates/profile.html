@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block head %}
+    <link href="{{ url_for('static', filename='profile.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<div class="profileinfo">
+    <h2 class="profileinfo__title">Info about me</h2>
+    <div class="profileinfo__block">
+        Name
+        <input id="first" class="profileinfo__blocktext" placeholder="{{ info.name }}"><img id="change" class="refactdata" src="/static/src/refact.png" alt="">
+    </div>
+    <div class="profileinfo__block">
+        Surname
+        <input class="profileinfo__blocktext" placeholder="{{ info.surname }}"><img class="refactdata" src="/static/src/refact.png" alt="">
+    </div>
+    <div class="profileinfo__block">
+        Mail
+        <input class="profileinfo__blocktext" placeholder="{{ info.mail }}"><img class="refactdata" src="/static/src/refact.png" alt="">
+    </div>
+    <div class="profileinfo__block">
+        Password
+        <input class="profileinfo__blocktext" placeholder="{{ info.password }}"><img class="refactdata" src="/static/src/refact.png" alt="">
+    </div>
+    <div class="profileinfo__block">
+        Phone
+        <input class="profileinfo__blocktext" id="phone" placeholder="{{ info.phone }}"><img class="refactdata" src="/static/src/refact.png" alt="">
+    </div>
+</div>
+<div class="profilebuttons">
+    <button onclick="location.href  = '{{ url_for('leave_account') }}'">Leave<br>account</button>
+    <button class="profilebutton" onclick="location.href='{{ url_for("show_orders") }}'">Orders</button>
+    <button class="profilebutton" onclick="location.href='{{ url_for("show_saved") }}'">Saved</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://unpkg.com/jquery-input-mask-phone-number@1.0.14/dist/jquery-input-mask-phone-number.js"></script>
+<script>
+    $('#change').on('click', function () {
+
+        $.ajax({
+            url: '{{ url_for('aboba') }}',
+            method: 'post',
+            dataType: 'html',
+            data: {'first': $('#first').val()},
+            success: function(data) {
+                data = JSON.parse(data)
+                let newVal = data["aboba"]
+                $('#first').val('')
+                $('#first').attr("placeholder", newVal)
+            }
+        })
+    })
+
+    $(document).ready(function () {
+        $('#phone').usPhoneFormat({
+            format: '(xxx) xxx-xxxx',
+        });
+    });
+</script>
+{% endblock %}
